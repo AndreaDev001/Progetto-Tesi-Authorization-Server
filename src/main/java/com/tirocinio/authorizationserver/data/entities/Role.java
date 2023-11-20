@@ -28,7 +28,7 @@ public class Role implements GrantedAuthority
     @Column(name = "ROLE_ID")
     private UUID id;
 
-    @Column(name = "NAME",nullable = false)
+    @Column(name = "NAME",nullable = false,unique = true)
     private String name;
 
     @CreatedDate

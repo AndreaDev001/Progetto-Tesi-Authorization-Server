@@ -32,7 +32,7 @@ public class Client
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "CLIENT_ID",nullable = false)
+    @Column(name = "CLIENT_ID",nullable = false,unique = true)
     @Convert(converter = TrimConverter.class)
     @Length(min = 3,max = 20)
     private String clientID;

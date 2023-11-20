@@ -11,6 +11,7 @@ public interface RoleService
 {
     CollectionModel<RoleDto> getRoles();
     RoleDto getRole(UUID roleID);
-    void createRole(String name);
+    RoleDto getRole(String name);
+    RoleDto createRole(String name);
     void deleteRole(UUID roleID);
 }

@@ -56,7 +56,12 @@ public class AuthConfig
     @Order(2)
     public SecurityFilterChain webFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/documentation/**").permitAll().anyRequest().authenticated())
+                        auth.requestMatchers("/documentation/**").permitAll()
+                                .requestMatchers("/users/public/**").permitAll()
+                                .requestMatchers("/local-users/public/**").permitAll()
+                                .requestMatchers("/clients/public/**").permitAll()
+                                .requestMatchers("/roles/public/**").permitAll()
+                                .anyRequest().authenticated())
                 .formLogin(Customizer.withDefaults());
         return httpSecurity.build();
     }

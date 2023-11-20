@@ -39,8 +39,14 @@ public class RoleServiceImp extends GenericServiceImp<Role,RoleDto> implements R
     }
 
     @Override
-    public void createRole(String name) {
+    public RoleDto getRole(String name) {
+        Role role = this.roleDao.getRoleByName(name).orElseThrow();
+        return this.modelMapper.map(role,RoleDto.class);
+    }
 
+    @Override
+    public RoleDto createRole(String name) {
+        return null;
     }
 
     @Override

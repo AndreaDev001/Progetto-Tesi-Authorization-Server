@@ -11,9 +11,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -42,6 +45,12 @@ public class UserServiceImp extends GenericServiceImp<User,UserDto> implements U
     public UserDto getUser(UUID id) {
         User user = this.userDao.findById(id).orElseThrow();
         return this.modelMapper.map(user,UserDto.class);
+    }
+
+    @Override
+    public CollectionModel<Provider> getProviders() {
+        List<Provider> providers = Arrays.stream(Provider.values()).toList();
+        return CollectionModel.of(providers);
     }
 
     @Override
