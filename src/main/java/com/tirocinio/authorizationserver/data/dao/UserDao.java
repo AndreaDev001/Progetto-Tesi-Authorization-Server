@@ -4,6 +4,7 @@ package com.tirocinio.authorizationserver.data.dao;
 import com.tirocinio.authorizationserver.data.entities.User;
 import com.tirocinio.authorizationserver.data.entities.enums.Provider;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,5 +16,5 @@ import java.util.UUID;
 public interface UserDao extends JpaRepository<User, UUID>
 {
     @Query("select u from User u where u.provider = :requiredProvider")
-    Page<User> getUsers(@Param("requiredProvider") Provider provider);
+    Page<User> getUsers(@Param("requiredProvider") Provider provider, Pageable pageable);
 }
