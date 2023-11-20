@@ -25,6 +25,7 @@ public class ClientServiceImp implements RegisteredClientRepository, ClientServi
     public void save(RegisteredClient registeredClient) {
 
     }
+
     @Override
     public RegisteredClient findById(String id) {
         Client client = this.clientDao.findById(UUID.fromString(id)).orElseThrow();

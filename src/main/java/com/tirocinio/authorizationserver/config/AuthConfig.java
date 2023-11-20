@@ -56,7 +56,7 @@ public class AuthConfig
     @Order(2)
     public SecurityFilterChain webFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(auth ->
-                        auth.anyRequest().authenticated())
+                        auth.requestMatchers("/documentation/**").permitAll().anyRequest().authenticated())
                 .formLogin(Customizer.withDefaults());
         return httpSecurity.build();
     }
