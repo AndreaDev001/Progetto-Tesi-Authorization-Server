@@ -1,0 +1,16 @@
+div#background-holder {
+    position: fixed;
+    inset: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+div#form-holder {
+    padding: 5% 32%;
+    border-radius: 40px;
+}
+div#form-control-holder {
+    background-color: rgba(0,0,0,0.6);
+    padding: 10px 2px;
+    border-radius: 40px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <script th:src="@{/js/login.js}"></script>
+</head>
+<body>
+<div>
+    <div id="background-holder" style="background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)),url('https://images.chesscomfiles.com/uploads/v1/images_users/tiny_mce/PedroPinhata/php6wV0bn.png')">
+        <div id = "form-holder">
+            <div id = "form-control-holder" class = "text-center">
+                <section id = "form-control-holder-header">
+                    <h2 class = "text-white">Login</h2>
+                    <h5 class = "text-white">Please provide your username and password</h5>
+                </section>
+                <section id = "form-control-holder-body" style="padding: 0 15%">
+                    <div>
+                        <label for="usernameControl" class = "form-label text-white">Username</label>
+                        <input class = "form-control" id="usernameControl" type="text">
+                    </div>
+                    <div>
+                        <label for="passwordControl" class = "form-label text-white">Password</label>
+                        <input class = "form-control" id="passwordControl" type="password">
+                    </div>
+                </section>
+                <section id = "form-control-holder-footer" class = "mt-1" style="padding: 0% 25%">
+                    <div>
+                        <a class = "d-block" href="http://localhost:9000/register">Don't have an account? Register</a>
+                        <button class = "btn btn-secondary btn-lg mt-1 w-100">Login</button>
+                    </div>
+                    <div class="mt-1">
+                        <a class="d-block btn btn-light btn-block bg-white " href="http://enterpriseapplications.live:9000/oauth2/authorization/google-idp" role="link" style="text-transform: none;">
+                            <img width="20" style="margin-right: 5px;" alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                            Continue with google
+                        </a>
+                        <a class="d-block btn btn-light btn-block bg-white" href="http://enterpriseapplications.live:9000/oauth2/authorization/google-idp" role="link" style="text-transform: none;">
+                            <img width="20" style="margin-right: 5px;" alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                            Continue with facebook
+                        </a>
+                        <a class="d-block btn btn-light btn-block bg-white" href="http://enterpriseapplications.live:9000/oauth2/authorization/google-idp" role="link" style="text-transform: none;">
+                            <img width="20" style="margin-right: 5px;" alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                            Continue with github
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

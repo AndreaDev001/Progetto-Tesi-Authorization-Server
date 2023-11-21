@@ -79,8 +79,10 @@ public class AuthConfig
                                 .requestMatchers("/roles/public/**").permitAll()
                                 .requestMatchers("/login").permitAll()
                                 .requestMatchers("/register").permitAll()
-                                .anyRequest().authenticated())
-                .formLogin(Customizer.withDefaults());
+                                .anyRequest().permitAll())
+                .formLogin(customizer -> {
+                    customizer.loginPage("/login");
+                });
         return httpSecurity.build();
     }
     @Bean
