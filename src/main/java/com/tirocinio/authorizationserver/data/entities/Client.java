@@ -33,8 +33,6 @@ public class Client
     private UUID id;
 
     @Column(name = "CLIENT_ID",nullable = false,unique = true)
-    @Convert(converter = TrimConverter.class)
-    @Length(min = 3,max = 20)
     private String clientID;
 
     @Column(name = "CLIENT_SECRET",nullable = false)
