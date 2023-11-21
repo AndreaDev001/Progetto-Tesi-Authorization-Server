@@ -11,7 +11,7 @@
 <div>
     <div id="background-holder" style="background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)),url('https://images.chesscomfiles.com/uploads/v1/images_users/tiny_mce/PedroPinhata/php6wV0bn.png')">
         <div id = "form-holder">
-            <div id = "form-control-holder" class = "text-center">
+            <form id = "form-control-holder" class = "text-center" method="post" th:action="@{/login}">
                 <section id = "form-control-holder-header">
                     <h2 class = "text-white">Login</h2>
                     <h5 class = "text-white">Please provide your username and password or use an external provider</h5>
@@ -19,11 +19,11 @@
                 <section id = "form-control-holder-body" style="padding: 0 15%">
                         <div>
                             <label for="usernameControl" class = "form-label text-white">Username</label>
-                            <input class = "input-control" id="usernameControl" type="text" placeholder="Username">
+                            <input name="username" class = "input-control" id="usernameControl" type="text" placeholder="Username">
                         </div>
                         <div>
                             <label for="passwordControl" class = "form-label text-white">Password</label>
-                            <input class = "input-control" id="passwordControl" type="password">
+                            <input name="password" class = "input-control" id="passwordControl" type="password">
                         </div>
                 </section>
                 <section id = "form-control-holder-footer" class = "mt-1" style="padding: 0% 25%">
@@ -31,7 +31,7 @@
                         <a class = "d-block" href="http://localhost:9000/register">Don't have an account? Register</a>
                         <button class = "btn btn-secondary btn-block">Perform Login</button>
                     </div>
-                    <div>
+                    <div class = "mt-2">
                         <a class="d-block btn btn-light bg-white mt-1" href="http://enterpriseapplications.live:9000/oauth2/authorization/google-idp" role="link" style="text-transform: none;">
                             <img width="20" style="margin-right: 5px;" alt="" src="https://static-00.iconduck.com/assets.00/google-icon-2048x2048-czn3g8x8.png" />
                             Continue with Google
