@@ -4,7 +4,7 @@ import com.tirocinio.authorizationserver.data.dao.ClientDao;
 import com.tirocinio.authorizationserver.data.dao.LocalUserDao;
 import com.tirocinio.authorizationserver.data.dao.RoleDao;
 import com.tirocinio.authorizationserver.data.entities.Client;
-import com.tirocinio.authorizationserver.data.entities.LocalUser;
+import com.tirocinio.authorizationserver.data.entities.users.LocalUser;
 import com.tirocinio.authorizationserver.data.entities.Role;
 import com.tirocinio.authorizationserver.data.entities.enums.Provider;
 import org.springframework.beans.factory.annotation.Autowired;

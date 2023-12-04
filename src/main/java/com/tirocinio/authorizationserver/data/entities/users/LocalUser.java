@@ -1,4 +1,4 @@
-package com.tirocinio.authorizationserver.data.entities;
+package com.tirocinio.authorizationserver.data.entities.users;
 
 
 import com.tirocinio.authorizationserver.data.converters.TrimConverter;

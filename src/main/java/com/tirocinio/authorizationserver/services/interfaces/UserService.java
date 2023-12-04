@@ -1,9 +1,7 @@
 package com.tirocinio.authorizationserver.services.interfaces;
 
 import com.tirocinio.authorizationserver.data.dto.output.UserDto;
-import com.tirocinio.authorizationserver.data.entities.User;
 import com.tirocinio.authorizationserver.data.entities.enums.Provider;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.PagedModel;

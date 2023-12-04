@@ -1,7 +1,7 @@
 package com.tirocinio.authorizationserver.data.dao;
 
 
-import com.tirocinio.authorizationserver.data.entities.LocalUser;
+import com.tirocinio.authorizationserver.data.entities.users.LocalUser;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,7 +1,8 @@
-package com.tirocinio.authorizationserver.data.entities;
+package com.tirocinio.authorizationserver.data.entities.users;
 
 
 import com.tirocinio.authorizationserver.data.converters.TrimConverter;
+import com.tirocinio.authorizationserver.data.entities.Role;
 import com.tirocinio.authorizationserver.data.entities.enums.Provider;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;

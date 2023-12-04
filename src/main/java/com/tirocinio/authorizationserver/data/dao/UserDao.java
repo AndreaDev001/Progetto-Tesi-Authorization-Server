@@ -1,7 +1,7 @@
 package com.tirocinio.authorizationserver.data.dao;
 
 
-import com.tirocinio.authorizationserver.data.entities.User;
+import com.tirocinio.authorizationserver.data.entities.users.User;
 import com.tirocinio.authorizationserver.data.entities.enums.Provider;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

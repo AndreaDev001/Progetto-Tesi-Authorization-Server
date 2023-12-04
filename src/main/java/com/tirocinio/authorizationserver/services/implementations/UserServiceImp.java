@@ -1,12 +1,10 @@
 package com.tirocinio.authorizationserver.services.implementations;
 
 import com.tirocinio.authorizationserver.data.dao.UserDao;
-import com.tirocinio.authorizationserver.data.dto.output.GenericOutput;
 import com.tirocinio.authorizationserver.data.dto.output.UserDto;
-import com.tirocinio.authorizationserver.data.entities.User;
+import com.tirocinio.authorizationserver.data.entities.users.User;
 import com.tirocinio.authorizationserver.data.entities.enums.Provider;
 import com.tirocinio.authorizationserver.services.interfaces.UserService;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

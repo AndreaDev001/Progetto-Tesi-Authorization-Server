@@ -5,6 +5,8 @@ import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
+import com.tirocinio.authorizationserver.federated.FederatedIdentityConfigurer;
+import com.tirocinio.authorizationserver.federated.OAuth2UserHandler;
 import com.tirocinio.authorizationserver.services.implementations.UserDetailsServiceImp;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -51,6 +53,7 @@ public class AuthConfig
 {
     private final UserDetailsServiceImp userDetailsServiceImp;
     private final PasswordAuthenticationProvider passwordAuthenticationProvider;
+    private final OAuth2UserHandler oAuth2UserHandler;
 
     @Bean
     @Order(1)
@@ -65,12 +68,16 @@ public class AuthConfig
                 )
         );
         httpSecurity.oauth2ResourceServer(oauth2ResourceServer -> oauth2ResourceServer.jwt(Customizer.withDefaults()));
+
+        httpSecurity.apply(new FederatedIdentityConfigurer());
         return httpSecurity.build();
     }
 
     @Bean
     @Order(2)
     public SecurityFilterChain webFilterChain(HttpSecurity httpSecurity) throws Exception {
+        FederatedIdentityConfigurer federatedIdentityConfigurer = new FederatedIdentityConfigurer()
+                .oAuth2UserConsumer(oAuth2UserHandler);
         httpSecurity.authorizeHttpRequests(auth ->
                         auth.requestMatchers("/documentation/**").permitAll()
                                 .requestMatchers("/users/public/**").permitAll()
@@ -83,6 +90,7 @@ public class AuthConfig
                 .formLogin(customizer -> {
                     customizer.loginPage("/login");
                 });
+        httpSecurity.apply(federatedIdentityConfigurer);
         return httpSecurity.build();
     }
     @Bean

@@ -1,7 +1,7 @@
 package com.tirocinio.authorizationserver.config;
 
 import com.tirocinio.authorizationserver.data.dao.LocalUserDao;
-import com.tirocinio.authorizationserver.data.entities.LocalUser;
+import com.tirocinio.authorizationserver.data.entities.users.LocalUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

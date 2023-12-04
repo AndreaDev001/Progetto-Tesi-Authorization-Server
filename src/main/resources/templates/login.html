@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
     <script th:src="@{/js/login.js}"></script>
 </head>
 <body>
 <div>
-    <div id="background-holder" style="background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)),url('https://images.chesscomfiles.com/uploads/v1/images_users/tiny_mce/PedroPinhata/php6wV0bn.png')">
+    <div id="background-holder">
         <div id = "form-holder">
             <form id = "form-control-holder" class = "text-center" method="post" th:action="@{/login}">
                 <section id = "form-control-holder-header">
@@ -28,19 +28,20 @@
                 </section>
                 <section id = "form-control-holder-footer" class = "mt-1" style="padding: 0% 25%">
                     <div>
-                        <a class = "d-block" href="http://localhost:9000/register">Don't have an account? Register</a>
+                        <a class = "d-block" href="http://localhost:9000/register">Forgotten password?</a>
+                        <a class = "d-block mt-1" href="http://localhost:9000/register">Don't have an account? Register</a>
                         <button class = "btn btn-secondary btn-block">Perform Login</button>
                     </div>
                     <div class = "mt-2">
-                        <a class="d-block btn btn-light bg-white mt-1" href="http://enterpriseapplications.live:9000/oauth2/authorization/google-idp" role="link" style="text-transform: none;">
+                        <a class="d-block btn btn-light bg-white mt-1" href="http://localhost:9000/oauth2/authorization/google-idp" role="link" style="text-transform: none;">
                             <img width="20" style="margin-right: 5px;" alt="" src="https://static-00.iconduck.com/assets.00/google-icon-2048x2048-czn3g8x8.png" />
                             Continue with Google
                         </a>
-                        <a class="d-block btn btn-light bg-white mt-1" href="http://enterpriseapplications.live:9000/oauth2/authorization/google-idp" role="link" style="text-transform: none;">
+                        <a class="d-block btn btn-light bg-white mt-1" href="http://localhost:9000/oauth2/authorization/facebook-idp" role="link" style="text-transform: none;">
                             <img width="20" style="margin-right: 5px;" alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/1200px-2023_Facebook_icon.svg.png" />
                             Continue with Facebook
                         </a>
-                        <a class="d-block btn btn-light bg-white mt-1" href="http://enterpriseapplications.live:9000/oauth2/authorization/google-idp" role="link" style="text-transform: none;">
+                        <a class="d-block btn btn-light bg-white mt-1" href="http://localhost:9000/oauth2/authorization/github-idp" role="link" style="text-transform: none;">
                             <img width="20" style="margin-right: 5px;" alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScgLQ3o0PK7SJCf8HqgoJdeI3jslCPdCziNmrvvFloEg&s" />
                             Continue with Github
                         </a>

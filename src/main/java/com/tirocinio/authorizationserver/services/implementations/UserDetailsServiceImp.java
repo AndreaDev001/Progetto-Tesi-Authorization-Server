@@ -1,8 +1,6 @@
 package com.tirocinio.authorizationserver.services.implementations;
 
 import com.tirocinio.authorizationserver.data.dao.LocalUserDao;
-import com.tirocinio.authorizationserver.data.dao.UserDao;
-import com.tirocinio.authorizationserver.data.entities.LocalUser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
