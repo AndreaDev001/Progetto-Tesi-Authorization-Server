@@ -39,7 +39,7 @@ public class AuthorizationServerApplication implements CommandLineRunner {
 		Client client = Client.builder().clientID("client").clientSecret(passwordEncoder.encode("secret"))
 				.authorizationGrantTypes(Set.of(AuthorizationGrantType.AUTHORIZATION_CODE,AuthorizationGrantType.CLIENT_CREDENTIALS,AuthorizationGrantType.REFRESH_TOKEN))
 				.authenticationMethods(Set.of(ClientAuthenticationMethod.CLIENT_SECRET_BASIC))
-				.redirectUris(Set.of("https://oauthdebugger.com/debug","https://oauth.pstmn.io/v1/callback"))
+				.redirectUris(Set.of("https://oauthdebugger.com/debug","https://oauth.pstmn.io/v1/callback","http://localhost:4200/index.html"))
 				.scopes(Set.of("openid"))
 				.proofKey(true).build();
 		Role userRole = Role.builder().name("ROLE_USER").build();

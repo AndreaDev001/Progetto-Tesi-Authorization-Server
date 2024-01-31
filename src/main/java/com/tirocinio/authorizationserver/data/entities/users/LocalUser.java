@@ -10,12 +10,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-@Entity
-@Table(name = "LOCAL_USERS")
-@EqualsAndHashCode(callSuper = false)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
+@Entity
+@Table(name = "LOCAL_USERS")
 public class LocalUser extends User implements UserDetails
 {
 
@@ -30,6 +30,7 @@ public class LocalUser extends User implements UserDetails
     private String surname;
 
     @Column(name = "PASSWORD",nullable = false)
+    @Convert(converter = TrimConverter.class)
     private String password;
 
     @Column(name = "LOCKED",nullable = false)

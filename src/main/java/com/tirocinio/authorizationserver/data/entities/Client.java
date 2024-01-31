@@ -19,23 +19,21 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-@Entity
-@Table(name = "CLIENTS")
-@EntityListeners(value = AuditingEntityListener.class)
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class Client
+@EqualsAndHashCode(callSuper = false)
+@Entity
+@Table(name = "CLIENTS")
+public class Client extends GenericEntity
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-
     @Column(name = "CLIENT_ID",nullable = false,unique = true)
+    @Convert(converter = TrimConverter.class)
     private String clientID;
 
     @Column(name = "CLIENT_SECRET",nullable = false)
+    @Convert(converter = TrimConverter.class)
     private String clientSecret;
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -52,14 +50,6 @@ public class Client
 
     @Column(name = "PROOF_KEY",nullable = false)
     private boolean proofKey;
-
-    @CreatedDate
-    @Column(name = "CREATED_DATE",nullable = false)
-    private LocalDate createdDate;
-
-    @LastModifiedDate
-    @Column(name = "LAST_MODIFIED_DATE",nullable = false)
-    private LocalDate lastModifiedDate;
 
     public static RegisteredClient convert(Client client) {
         RegisteredClient.Builder builder = RegisteredClient.withId(client.getId().toString())
