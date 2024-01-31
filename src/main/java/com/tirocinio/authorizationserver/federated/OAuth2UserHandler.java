@@ -21,12 +21,12 @@ public class OAuth2UserHandler implements Consumer<OAuth2User> {
 
     @Override
     public void accept(OAuth2User user) {
-        Role userRole = this.roleDao.getRoleByName("ROLE_USER").orElseThrow();
+        Role memberRole = this.roleDao.getRoleByName("ROLE_MEMBER").orElseThrow();
         String sub = (String)user.getAttribute("sub");
         Optional<GoogleUser> googleUserOptional = this.googleUserDao.getUserByExternalID(sub);
         if(googleUserOptional.isEmpty()) {
             GoogleUser googleUser = GoogleUser.fromOAuth2User(user);
-            googleUser.setRoles(Set.of(userRole));
+            googleUser.setRoles(Set.of(memberRole));
             this.googleUserDao.save(googleUser);
         }
     }

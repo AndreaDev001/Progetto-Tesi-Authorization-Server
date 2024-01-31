@@ -36,14 +36,18 @@ public class AuthorizationServerApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Client client = Client.builder().clientID("client").clientSecret(passwordEncoder.encode("secret"))
-				.authorizationGrantTypes(Set.of(AuthorizationGrantType.AUTHORIZATION_CODE,AuthorizationGrantType.CLIENT_CREDENTIALS,AuthorizationGrantType.REFRESH_TOKEN))
-				.authenticationMethods(Set.of(ClientAuthenticationMethod.CLIENT_SECRET_BASIC))
-				.redirectUris(Set.of("https://oauthdebugger.com/debug","https://oauth.pstmn.io/v1/callback","http://localhost:4200/index.html"))
-				.scopes(Set.of("openid"))
-				.proofKey(true).build();
-		Role userRole = Role.builder().name("ROLE_USER").build();
-		Role adminRole = Role.builder().name("ROLE_ADMIN").build();
+		Client client = new Client();
+		client.setClientID("client");
+		client.setClientSecret(passwordEncoder.encode("secret"));
+		client.setAuthorizationGrantTypes(Set.of(AuthorizationGrantType.AUTHORIZATION_CODE,AuthorizationGrantType.CLIENT_CREDENTIALS,AuthorizationGrantType.REFRESH_TOKEN));
+		client.setAuthenticationMethods(Set.of(ClientAuthenticationMethod.CLIENT_SECRET_BASIC));
+		client.setRedirectUris(Set.of("https://oauthdebugger.com/debug","https://oauth.pstmn.io/v1/callback","http://localhost:4200/index.html"));
+		client.setScopes(Set.of("openid"));
+		client.setProofKey(true);
+		Role userRole = new Role();
+		Role adminRole = new Role();
+		userRole.setName("ROLE_MEMBER");
+		adminRole.setName("ROLE_ADMIN");
 		LocalUser localUser = new LocalUser();
 		localUser.setEmail("marchioandrea02@gmail.com");
 		localUser.setUsername("andrea");

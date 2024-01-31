@@ -15,3 +15,9 @@ spring:
             client-secret: ${FACEBOOK_CLIENT_SECRET}
             scope: openid
             client-name: ${FACEBOOK_CLIENT_NAME}
+          github-idp:
+            provider: github
+            client-id: ${GITHUB_CLIENT_ID}
+            client-secret: ${GITHUB_CLIENT_SECRET}
+            scope: openid
+            client-name: ${GITHUB_CLIENT_NAME}

@@ -1,10 +1,6 @@
 div#background-holder {
     position: fixed;
     inset: 0;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)),url('https://images.chesscomfiles.com/uploads/v1/images_users/tiny_mce/PedroPinhata/php6wV0bn.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
 }
 small.error {
     color: red;
