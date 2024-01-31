@@ -1,5 +1,6 @@
 package com.tirocinio.authorizationserver.config.exceptions;
 
+import com.tirocinio.authorizationserver.config.internalization.MessageGetter;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataAccessException;
@@ -92,12 +93,6 @@ public class GlobalExceptionHandler {
     @ResponseStatus(value = HttpStatus.METHOD_NOT_ALLOWED)
     public ResponseEntity<ErrorResponse> methodNotAllowedError(HttpRequestMethodNotSupportedException exception,HttpServletRequest request) {
         return errorResponse(HttpStatus.METHOD_NOT_ALLOWED,Date.from(Instant.now()),"error.http.unsupported",request.getRequestURI());
-    }
-
-    @ExceptionHandler({MultipartException.class, MaxUploadSizeExceededException.class})
-    @ResponseStatus(value = HttpStatus.PAYLOAD_TOO_LARGE)
-    public ResponseEntity<ErrorResponse> maxUploadSizeException(MaxUploadSizeExceededException exception,HttpServletRequest request) {
-        return errorResponse(HttpStatus.PAYLOAD_TOO_LARGE,Date.from(Instant.now()),"error.http.maxUpload",request.getRequestURI());
     }
 
     public ResponseEntity<ErrorResponse> errorResponse(HttpStatus httpStatus, Date date, String code, String url) {
