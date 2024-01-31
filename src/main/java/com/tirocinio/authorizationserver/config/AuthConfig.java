@@ -108,6 +108,7 @@ public class AuthConfig
                                 .requestMatchers("/roles/public/**").permitAll()
                                 .requestMatchers("/login").permitAll()
                                 .requestMatchers("/register").permitAll()
+                                .requestMatchers("/createAccount").permitAll()
                                 .anyRequest().permitAll())
                 .formLogin(customizer -> {
                     customizer.loginPage("/login");
