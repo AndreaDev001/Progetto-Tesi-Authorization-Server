@@ -37,11 +37,14 @@ public class AuthorizationServerApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Client client = new Client();
+
 		client.setClientID("client");
 		client.setClientSecret(passwordEncoder.encode("secret"));
+
+
 		client.setAuthorizationGrantTypes(Set.of(AuthorizationGrantType.AUTHORIZATION_CODE,AuthorizationGrantType.CLIENT_CREDENTIALS,AuthorizationGrantType.REFRESH_TOKEN));
-		client.setAuthenticationMethods(Set.of(ClientAuthenticationMethod.CLIENT_SECRET_BASIC));
-		client.setRedirectUris(Set.of("https://oauthdebugger.com/debug","https://oauth.pstmn.io/v1/callback","http://localhost:4200/index.html"));
+		client.setAuthenticationMethods(Set.of(ClientAuthenticationMethod.CLIENT_SECRET_BASIC,ClientAuthenticationMethod.CLIENT_SECRET_POST,ClientAuthenticationMethod.CLIENT_SECRET_JWT));
+		client.setRedirectUris(Set.of("https://oauthdebugger.com/debug","https://oauth.pstmn.io/v1/callback","http://localhost:4200/unauthorized"));
 		client.setScopes(Set.of("openid"));
 		client.setProofKey(true);
 		Role userRole = new Role();

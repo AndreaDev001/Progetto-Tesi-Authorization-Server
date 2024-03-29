@@ -40,6 +40,7 @@ public class TokenConfiguration
                 LocalUser requiredUser = this.localUserDao.findById(UUID.fromString(principal.getName())).orElseThrow();
                 provider = requiredUser.getProvider().toString();
                 roles = principal.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toSet());
+                context.getClaims().claim("sub",requiredUser.getId());
                 context.getClaims().claim("username",requiredUser.getUsername());
                 context.getClaims().claim("email",requiredUser.getEmail());
                 context.getClaims().claim("name",requiredUser.getName());

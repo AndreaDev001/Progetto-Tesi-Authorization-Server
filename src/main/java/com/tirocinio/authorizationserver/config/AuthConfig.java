@@ -5,6 +5,7 @@ import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
+import com.tirocinio.authorizationserver.CorsFilter;
 import com.tirocinio.authorizationserver.federated.FederatedIdentityConfigurer;
 import com.tirocinio.authorizationserver.federated.OAuth2UserHandler;
 import com.tirocinio.authorizationserver.services.implementations.UserDetailsServiceImp;
@@ -21,28 +22,18 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.oauth2.core.AuthorizationGrantType;
-import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
-import org.springframework.security.oauth2.core.oidc.OidcScopes;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.authorization.InMemoryOAuth2AuthorizationConsentService;
 import org.springframework.security.oauth2.server.authorization.InMemoryOAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsentService;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
-import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
-import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
-import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2AuthorizationServerConfigurer;
 import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
-import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
 
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -58,25 +49,7 @@ public class AuthConfig
     private final UserDetailsServiceImp userDetailsServiceImp;
     private final PasswordAuthenticationProvider passwordAuthenticationProvider;
     private final OAuth2UserHandler oAuth2UserHandler;
-
-
-
-    @Bean
-    public CorsFilter corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.addAllowedOrigin("http://localhost:4200");
-        corsConfiguration.addAllowedHeader("*");
-        corsConfiguration.addAllowedMethod("OPTIONS");
-        corsConfiguration.addAllowedMethod("HEAD");
-        corsConfiguration.addAllowedMethod("GET");
-        corsConfiguration.addAllowedMethod("PUT");
-        corsConfiguration.addAllowedMethod("POST");
-        corsConfiguration.addAllowedMethod("DELETE");
-        corsConfiguration.addAllowedMethod("PATCH");
-        source.registerCorsConfiguration("/**",corsConfiguration);
-        return new CorsFilter(source);
-    }
+    private final CorsFilter testFilter;
 
     @Bean
     @Order(1)
@@ -90,6 +63,7 @@ public class AuthConfig
                         new MediaTypeRequestMatcher(MediaType.TEXT_HTML)
                 )
         );
+        httpSecurity.csrf(AbstractHttpConfigurer::disable);
         httpSecurity.oauth2ResourceServer(oauth2ResourceServer -> oauth2ResourceServer.jwt(Customizer.withDefaults()));
         httpSecurity.apply(new FederatedIdentityConfigurer());
         return httpSecurity.build();
@@ -112,7 +86,7 @@ public class AuthConfig
                                 .anyRequest().permitAll())
                 .formLogin(customizer -> {
                     customizer.loginPage("/login");
-                });
+                }).csrf(AbstractHttpConfigurer::disable);
         httpSecurity.apply(federatedIdentityConfigurer);
         return httpSecurity.build();
     }
