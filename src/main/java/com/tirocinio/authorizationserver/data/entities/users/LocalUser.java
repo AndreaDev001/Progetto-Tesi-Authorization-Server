@@ -19,17 +19,17 @@ import java.util.Collection;
 public class LocalUser extends User implements UserDetails
 {
 
-    @Column(name = "NAME",nullable = false)
+    @Column(name = "NAME",nullable = false,updatable = false)
     @Convert(converter = TrimConverter.class)
     @Length(min = 3,max = 10)
     private String name;
 
-    @Column(name = "SURNAME",nullable = false)
+    @Column(name = "SURNAME",nullable = false,updatable = false)
     @Convert(converter = TrimConverter.class)
     @Length(min = 3,max = 10)
     private String surname;
 
-    @Column(name = "PASSWORD",nullable = false)
+    @Column(name = "PASSWORD",nullable = false,updatable = false)
     @Convert(converter = TrimConverter.class)
     private String password;
 

@@ -5,14 +5,18 @@ import com.tirocinio.authorizationserver.data.dto.input.CreateLocalUserDto;
 import com.tirocinio.authorizationserver.data.dto.input.PaginationRequest;
 import com.tirocinio.authorizationserver.data.dto.output.LocalUserDto;
 import com.tirocinio.authorizationserver.services.interfaces.LocalUserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.repository.query.Param;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.UUID;
 
 @RestController
@@ -39,8 +43,14 @@ public class LocalUserController {
     }
 
     @PostMapping("/createAccount")
-    public ResponseEntity<LocalUserDto> createUser(@ParameterObject @Valid CreateLocalUserDto createLocalUserDto) {
-        System.out.println(createLocalUserDto.toString());
-        return ResponseEntity.status(201).body(this.localUserService.createUser(createLocalUserDto));
+    public void createUser(@ParameterObject @Valid CreateLocalUserDto createLocalUserDto, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try
+        {
+            this.localUserService.createUser(createLocalUserDto);
+            response.sendRedirect("/login");
+        }
+        catch (Exception exception) {
+            response.sendRedirect("/register?error='invalidUsername'");
+        }
     }
 }

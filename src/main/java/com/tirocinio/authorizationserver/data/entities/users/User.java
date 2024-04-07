@@ -28,16 +28,16 @@ import java.util.UUID;
 public class User extends GenericEntity
 {
     @Email
-    @Column(name = "EMAIL",nullable = false)
+    @Column(name = "EMAIL",nullable = false,updatable = false)
     @Convert(converter = TrimConverter.class)
     protected String email;
 
-    @Column(name = "USERNAME",nullable = false)
+    @Column(name = "USERNAME",nullable = false,updatable = false,unique = true)
     @Convert(converter = TrimConverter.class)
     @Length(min = 3,max = 20)
     protected String username;
 
-    @Column(name = "PROVIDER",nullable = false)
+    @Column(name = "PROVIDER",nullable = false,updatable = false)
     @Enumerated(value = EnumType.STRING)
     protected Provider provider;
 

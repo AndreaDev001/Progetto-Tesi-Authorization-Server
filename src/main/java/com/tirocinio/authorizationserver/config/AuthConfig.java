@@ -5,7 +5,6 @@ import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
-import com.tirocinio.authorizationserver.CorsFilter;
 import com.tirocinio.authorizationserver.federated.FederatedIdentityConfigurer;
 import com.tirocinio.authorizationserver.federated.OAuth2UserHandler;
 import com.tirocinio.authorizationserver.services.implementations.UserDetailsServiceImp;
@@ -77,13 +76,15 @@ public class AuthConfig
         httpSecurity.authorizeHttpRequests(auth ->
                         auth.requestMatchers("/documentation/**").permitAll()
                                 .requestMatchers("/users/public/**").permitAll()
-                                .requestMatchers("/local-users/public/**").permitAll()
+                                .requestMatchers("/local_users/public/**").permitAll()
                                 .requestMatchers("/clients/public/**").permitAll()
                                 .requestMatchers("/roles/public/**").permitAll()
                                 .requestMatchers("/login").permitAll()
                                 .requestMatchers("/register").permitAll()
-                                .requestMatchers("/createAccount").permitAll()
-                                .anyRequest().permitAll())
+                                .requestMatchers("/local_users/createAccount").permitAll()
+                                .requestMatchers("/css/**").permitAll()
+                                .requestMatchers("/js/**").permitAll()
+                                .anyRequest().authenticated())
                 .formLogin(customizer -> {
                     customizer.loginPage("/login");
                 }).csrf(AbstractHttpConfigurer::disable);

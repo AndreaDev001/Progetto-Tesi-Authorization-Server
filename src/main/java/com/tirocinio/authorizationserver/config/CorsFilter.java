@@ -1,4 +1,4 @@
-package com.tirocinio.authorizationserver;
+package com.tirocinio.authorizationserver.config;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

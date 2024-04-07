@@ -46,7 +46,7 @@ public class LocalUserServiceImp extends GenericServiceImp<LocalUser, LocalUserD
         localUser.setEmail(createLocalUserDto.getEmail());
         localUser.setName(createLocalUserDto.getName());
         localUser.setSurname(createLocalUserDto.getSurname());
-        localUser.setUsername(createLocalUserDto.getSurname());
+        localUser.setUsername(createLocalUserDto.getUsername());
         localUser.setPassword(passwordEncoder.encode(createLocalUserDto.getPassword()));
         localUser.setProvider(Provider.LOCAL);
         localUser = this.localUserDao.save(localUser);

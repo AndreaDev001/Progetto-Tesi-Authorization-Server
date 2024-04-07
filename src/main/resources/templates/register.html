@@ -2,7 +2,8 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/css/styles.css}">
     <script th:src="@{/js/register.js}"></script>
@@ -10,43 +11,49 @@
 <body>
     <div id = "background-holder">
         <div id = "form-holder">
-            <form id = "form-control-holder" class = "text-center" method="post" action="http://localhost:9000/createAccount">
+            <form id = "form-control-holder" class = "text-center" method="post" action="http://localhost:9000/local_users/createAccount">
                 <section id = "form-control-header">
-                    <h2 style="font-weight:bold" class = "text-center text-white">Register</h2>
-                    <h5 style="padding: 0px 40px" class = "text-white">Please provide email,username,name,surname and password to register a new account</h5>
+                    <div>
+                        <h3 style="font-weight:bold" class = "text-center text-white d-inline-block">Register</h3>
+                        <i class="fa-solid fa-users text-white d-inline-block" style="font-size: 25px"></i>
+                    </div>
+                    <p class = "text-white p-0 m-0">Please provide the specified information to register an account</p>
+                    <div class = "query-error-container" th:if="${param != null && param.error != null}">
+                        <div class = "alert alert-danger" role="alert">
+                            <p> An error has occurred, the specified username has already been used</p>
+                        </div>
+                    </div>
                 </section>
                 <section id = "form-control-holder-body">
-                    <section style="padding: 0 15%">
+                    <section style="padding: 5% 10%">
                         <div>
-                            <label for="emailControl" class="form-label text-white">Email</label>
+                            <label for="emailControl" class="input-label">Email</label>
                             <input class = "input-control" type="email" id = "emailControl" name = "email" required placeholder="example.mail@virgilio.it">
-                            <small id = "emailSupportingText" class = "text-white">Please provide a valid email</small>
+                            <small id = "emailSupportingText" class = "supporting-text">Please provide a valid email</small>
                             <div id = "emailErrorContainer"></div>
                         </div>
                         <div>
-                            <label for = "usernameControl" class = "form-label text-white">Username</label>
+                            <label for = "usernameControl" class = "input-label">Username</label>
                             <input class = "input-control" type="text" id = "usernameControl" name = "username" required placeholder="Username">
-                            <small id = "usernameSupportingText" class = "text-white">Please provide a valid username</small>
+                            <small id = "usernameSupportingText" class = "supporting-text">Please provide a valid username</small>
                             <div id = "usernameErrorContainer"></div>
                         </div>
                         <div>
-                            <label for="passwordControl" class = "form-label text-white">Password</label>
+                            <label for="passwordControl" class = "input-label">Password</label>
                             <input class = "input-control" type="password" id = "passwordControl" name="password" required>
-                            <small id = "passwordSupportingText" class = "text-white">Please provide a valid password</small>
+                            <small id = "passwordSupportingText" class = "supporting-text">Please provide a valid password</small>
                             <div id = "passwordErrorContainer"></div>
                         </div>
-                    </section>
-                    <section>
-                        <div class = "d-inline-block">
-                            <label for ="nameControl" class = "form-label text-white">Name</label>
+                        <div>
+                            <label for ="nameControl" class = "input-label">Name</label>
                             <input class = "input-control" type="text" id = "nameControl" name="name" required placeholder="Name">
-                            <small id = "nameSupportingText" class = "text-white">Please provide a valid name</small>
+                            <small id = "nameSupportingText" class = "supportingText">Please provide a valid name</small>
                             <div id = "nameErrorContainer"></div>
                         </div>
-                        <div class = "d-inline-block">
-                            <label for ="surnameControl" class = "form-label text-white">Surname</label>
+                        <div>
+                            <label for ="surnameControl" class = "input-label">Surname</label>
                             <input class = "input-control" type="text" id = "surnameControl" name="surname" required placeholder="Surname">
-                            <small id = "surnameSupportingText" class = "text-white">Please provide a valid surname</small>
+                            <small id = "surnameSupportingText" class = "supporting-text">Please provide a valid surname</small>
                             <div id = "surnameErrorContainer"></div>
                         </div>
                     </section>
@@ -54,8 +61,10 @@
                 <section id = "form-control-holder-footer" class = "mt-1" style="padding: 0% 25%">
                     <div>
                         <a class = "d-block" href="http://localhost:9000/login">Already have an account? Login</a>
-                        <button type = "submit" class = "btn btn-secondary btn-block mt-1">Confirm</button>
-                        <button id="resetButton" class = "btn btn-danger btn-block mt-1">Reset</button>
+                        <div class = "mt-1">
+                            <button type = "submit" class = "login-button w-100">Confirm</button>
+                            <button id="resetButton" class = "reset-button mt-1 w-100">Reset</button>
+                        </div>
                     </div>
                 </section>
             </form>

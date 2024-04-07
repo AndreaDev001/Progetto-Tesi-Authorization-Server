@@ -1,6 +1,8 @@
-div#background-holder {
-    position: fixed;
-    inset: 0;
+
+body
+{
+    background-color: rgb(0, 122, 204);
+    background-image: linear-gradient(rgb(0 0 0/35%) 0 0);
 }
 small.error {
     color: red;
@@ -9,19 +11,91 @@ input:focus {
     outline: none;
 }
 div#form-holder {
-    padding: 2% 31%;
-    border-radius: 40px;
+    padding: 2% 32%;
+    border-radius: 5px;
+}
+div.query-error-container {
+    margin-top: 10px;
+    border-radius: 5px;
+    color: black;
+    padding: 5px 20px;
+    text-align: center;
 }
 form#form-control-holder {
-    background-color: rgba(0,0,0,0.6);
     padding: 10px 2px;
-    border-radius: 20px;
+    height: 100%;
+    background-color: #252526;
+    border-radius: 5px;
 }
 input.input-control {
     display: block;
     width: 100%;
-    padding: 10px;
+    padding: 10px 20px;
+    background-color: #252526;
+    border: 0;
+    border-bottom: 1px solid #007acc;
+    color: whitesmoke;
+}
+section#form-control-holder-header {
+    padding: 20px 0px;
+}
+button.login-button
+{
+    background-color: #007acc;
     border-radius: 5px;
-    border: none;
-    border-bottom: 2px solid grey;
+    border: 0;
+    color: whitesmoke;
+    padding: 10px 60px;
+}
+.input-label
+{
+   width: 100%;
+   text-align: left;
+   color: whitesmoke;
+   padding-left: 5px;
+   padding-right: 5px;
+   margin: 0px;
+}
+.input-icon
+{
+      float: left;
+      margin-right: 10px;
+      margin-top: -30px;
+      position: relative;
+      z-index: 2;
+      color: whitesmoke;
+}
+a.google-button
+{
+    border-radius: 60%;
+}
+small.supporting-text
+{
+    width: 100%;
+    text-align: left;
+    color: whitesmoke;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 0px;
+}
+button.reset-button
+{
+    background-color: red;
+    border-radius: 5px;
+    border: 0;
+    padding: 10px 60px;
+    color: whitesmoke;
+}
+
+@media screen and (max-width: 992px) {
+    div#form-holder
+    {
+        padding: 2% 25%;
+    }
+}
+@media screen and (max-width: 600px) {
+    div#form-holder
+    {
+        padding: 2% 10%;
+    }
 }

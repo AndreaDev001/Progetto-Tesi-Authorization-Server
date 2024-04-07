@@ -9,15 +9,3 @@ spring:
             client-secret: ${GOOGLE_CLIENT_SECRET}
             scope: openid, https://www.googleapis.com/auth/userinfo.profile, https://www.googleapis.com/auth/userinfo.email
             client-name: ${GOOGLE_CLIENT_NAME}
-          facebook-idp:
-            provider: facebook
-            client-id: ${FACEBOOK_CLIENT_ID}
-            client-secret: ${FACEBOOK_CLIENT_SECRET}
-            scope: openid
-            client-name: ${FACEBOOK_CLIENT_NAME}
-          github-idp:
-            provider: github
-            client-id: ${GITHUB_CLIENT_ID}
-            client-secret: ${GITHUB_CLIENT_SECRET}
-            scope: openid
-            client-name: ${GITHUB_CLIENT_NAME}

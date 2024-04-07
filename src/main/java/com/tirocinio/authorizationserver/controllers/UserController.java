@@ -11,6 +11,7 @@ import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -24,11 +25,13 @@ public class UserController
     private final UserService userService;
 
     @GetMapping("/private")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<PagedModel<UserDto>> getUsers(@ParameterObject @Valid PaginationRequest paginationRequest) {
         return ResponseEntity.ok(this.userService.getUsers(paginationRequest.toPageable()));
     }
 
     @GetMapping("/private/{userID}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<UserDto> getUser(@PathVariable("userID") UUID userID) {
         return ResponseEntity.ok(this.userService.getUser(userID));
     }
@@ -39,6 +42,7 @@ public class UserController
     }
 
     @DeleteMapping("/private/{userID}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> deleteUser(@PathVariable("userID") UUID userID) {
         this.userService.deleteUser(userID);
         return ResponseEntity.noContent().build();
